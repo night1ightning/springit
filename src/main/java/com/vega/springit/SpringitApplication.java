@@ -1,6 +1,7 @@
 package com.vega.springit;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -16,8 +17,7 @@ import com.vega.springit.config.SpringitProperties;
 @EnableConfigurationProperties(SpringitProperties.class)
 public class SpringitApplication {
 
-    @Autowired
-    private SpringitProperties springitProperties;
+    private static final Logger log = LoggerFactory.getLogger(SpringitApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringitApplication.class, args);
@@ -26,7 +26,11 @@ public class SpringitApplication {
     @Bean
     CommandLineRunner runner() {
         return args -> {
-            System.out.println("Welcome message: " + springitProperties.getWelcomeMsg());
+            log.error("CommandLineRunner.run();");
+            log.warn("CommandLineRunner.run();");
+            log.info("CommandLineRunner.run();");
+            log.debug("CommandLineRunner.run();");
+            log.trace("CommandLineRunner.run();");
         };
     }
 }
